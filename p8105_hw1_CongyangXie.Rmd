@@ -1,0 +1,11 @@
+---
+title: "p8105_hw1_CongyangXie"
+author: "Congyang"
+date: "9/25/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
