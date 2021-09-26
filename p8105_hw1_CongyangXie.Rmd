@@ -2,10 +2,31 @@
 title: "p8105_hw1_CongyangXie"
 author: "Congyang"
 date: "9/25/2021"
-output: pdf_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Problem 1
+
+* Create a data frame comprised of:
+  + random sample of size 10 from a standard Normal distribution
+  + logical vector indicating whether elements of the sample are greater than 0
+  + a character vector of length 10
+  + factor vector of length 10, with 3 different factor “levels”
+
+```{r}
+
+library(ggplot2)
+
+df1 <- data.frame(c1 = rnorm(10), 
+                  c2 = is.positive(c1), 
+                  c3 = rep_len('ImAChar', 10), 
+                  c4 = factor(sample(c("Lv1","Lv2","Lv3"), 10, replace = TRUE), 
+                              ordered = TRUE, 
+                              levels = c("Lv1","Lv2","Lv3")))
+```
+  
+  
