@@ -20,13 +20,57 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 
 library(ggplot2)
+library(schoolmath)
 
-df1 <- data.frame(c1 = rnorm(10), 
-                  c2 = is.positive(c1), 
-                  c3 = rep_len('ImAChar', 10), 
-                  c4 = factor(sample(c("Lv1","Lv2","Lv3"), 10, replace = TRUE), 
-                              ordered = TRUE, 
-                              levels = c("Lv1","Lv2","Lv3")))
+c1 = rnorm(10)
+c2 = is.positive(c1)
+c3 = rep_len('ImAChar', 10)
+c4 = factor(sample(c("Lv1","Lv2","Lv3"), 10, replace = TRUE), ordered = TRUE, levels  = c("Lv1","Lv2","Lv3"))
+
+df1 <- data.frame(c1, c2, c3, c4)
+
 ```
+Try to take the mean of each variable in your dataframe. What works and what doesn’t?
+```{r}
+library(tidyverse)
+
+mean(pull(df1, 1))
+mean(pull(df1, 2))
+mean(pull(df1, 3))
+mean(pull(df1, 4))
+
+```
+
+The first mean is simply the arithmetic average. The true is 1, false is 0. But the third and last ones are not numeric or logical data, so their mean cannot be calculated.
+
+```{r, results='hide'}
+
+mean(as.numeric(pull(df1,2)))
+mean(as.numeric(pull(df1,3)))
+mean(as.numeric(pull(df1,4)))
+
+```
+ When using as.numeric(), it turns characters in column 3 to NAs and 3 ordinal factors in column 4 to 1, 2, 3.
   
+# Problem 2
+
+* Write a short description of the penguins dataset (not the penguins_raw dataset) using inline R code, including:
   
+  + the data in this dataset, including names / values of important variables
+  + the size of the dataset (using nrow and ncol)
+  + the mean flipper length
+
+```{r}
+
+data("penguins", package = "palmerpenguins")
+stat_penguins_raw <- skimr::skim(penguins_raw)
+#pull(stat_penguins_raw, "skim_variable")
+#list(t(stat_penguins_raw[stat_penguins_raw$skim_type == "character", 2]))
+count(unique(penguins_raw[,1]))
+```
+The variables in the penguins_raw are: `r pull(stat_penguins_raw, "skim_variable")`. 
+The peguines_raw dataset has `r nrow(penguins_raw)` rows and `r ncol(penguins_raw)` columns.
+studyName has `r for (i in 1:5) {print(i)}`unique values
+
+
+
