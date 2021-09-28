@@ -22,6 +22,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(ggplot2)
 library(schoolmath)
 
+set.seed(1)
 c1 = rnorm(10)
 c2 = is.positive(c1)
 c3 = rep_len('ImAChar', 10)
@@ -63,14 +64,18 @@ mean(as.numeric(pull(df1,4)))
 ```{r}
 
 data("penguins", package = "palmerpenguins")
-stat_penguins_raw <- skimr::skim(penguins_raw)
-#pull(stat_penguins_raw, "skim_variable")
-#list(t(stat_penguins_raw[stat_penguins_raw$skim_type == "character", 2]))
-count(unique(penguins_raw[,1]))
+
 ```
-The variables in the penguins_raw are: `r pull(stat_penguins_raw, "skim_variable")`. 
-The peguines_raw dataset has `r nrow(penguins_raw)` rows and `r ncol(penguins_raw)` columns.
-studyName has `r for (i in 1:5) {print(i)}`unique values
+  + The variables in the penguins are: `r names(penguins)`. 
+  + The peguines dataset has `r nrow(penguins)` rows and `r ncol(penguins)` columns.
+  + "species" is a factor variable, which has unique values: `r levels(pull(penguins, species))`.
+  + "island" is a factor variable, which has unique values: `r levels(pull(penguins, island))`.
+  + "sex" is a factor variable, which has unique values: `r levels(pull(penguins, sex))`.
+  + "bill_length_mm" is a numeric variable, whose mean is `r mean(pull(penguins, bill_length_mm), na.rm = TRUE)`, median is `r median(pull(penguins, bill_length_mm), na.rm = TRUE)`, standard deviation is `r sd(pull(penguins, bill_length_mm), na.rm = TRUE)`, range is `r max(pull(penguins, bill_length_mm), na.rm = TRUE) - min(pull(penguins, bill_length_mm), na.rm = TRUE)`.
+  + "bill_depth_mm" is a numeric variable, whose mean is `r mean(pull(penguins, bill_depth_mm), na.rm = TRUE)`, median is `r median(pull(penguins, bill_depth_mm), na.rm = TRUE)`, standard deviation is `r sd(pull(penguins, bill_depth_mm), na.rm = TRUE)`, and range is `r max(pull(penguins, bill_depth_mm), na.rm = TRUE) - min(pull(penguins, bill_depth_mm), na.rm = TRUE)`.
+  + "flipper_length_mm" is a numeric variable, whose mean is `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)`, median is `r median(pull(penguins, flipper_length_mm), na.rm = TRUE)`, standard deviation is `r sd(pull(penguins, flipper_length_mm), na.rm = TRUE)`, and range is `r max(pull(penguins, flipper_length_mm), na.rm = TRUE) - min(pull(penguins, flipper_length_mm), na.rm = TRUE)`.
+  + "body_mass_g" is a numeric variable, whose mean is `r mean(pull(penguins, body_mass_g), na.rm = TRUE)`, median is `r median(pull(penguins, body_mass_g), na.rm = TRUE)`, standard deviation is `r sd(pull(penguins, body_mass_g), na.rm = TRUE)`, and range is `r max(pull(penguins, body_mass_g), na.rm = TRUE) - min(pull(penguins, body_mass_g), na.rm = TRUE)`.
+  + "year" has unique values: `r unique(pull(penguins, year), na.rm = TRUE)`.
 
 
 
