@@ -15,7 +15,7 @@ Congyang
 ``` r
 library(ggplot2)
 library(schoolmath)
-
+# generate columns and then combine them to a dataframe
 set.seed(1)
 c1 = rnorm(10)
 c2 = is.positive(c1)
@@ -29,6 +29,7 @@ Try to take the mean of each variable in your dataframe. What works and
 what doesn’t?
 
 ``` r
+#Pull out each column to calculate mean.
 library(tidyverse)
 ```
 
@@ -78,6 +79,7 @@ The first mean is simply the arithmetic average. The true is 1, false is
 mean cannot be calculated.
 
 ``` r
+#turn data to numeric for calculation
 mean(as.numeric(pull(df1,2)))
 mean(as.numeric(pull(df1,3)))
 ```
@@ -102,27 +104,32 @@ ordinal factors in column 4 to 1, 2, 3.
     -   the mean flipper length
 
 ``` r
+## import data set
 data("penguins", package = "palmerpenguins")
 ```
 
--   The variables in the penguins are: species, island,
-    bill\_length\_mm, bill\_depth\_mm, flipper\_length\_mm,
-    body\_mass\_g, sex, year.
--   The peguines dataset has 344 rows and 8 columns.
--   “species” is a factor variable, which has unique values: Adelie,
-    Chinstrap, Gentoo.
--   “island” is a factor variable, which has unique values: Biscoe,
-    Dream, Torgersen.
--   “sex” is a factor variable, which has unique values: female, male.
--   “bill\_length\_mm” is a numeric variable, whose mean is 43.9219298,
-    median is 44.45, standard deviation is 5.4595837, range is 27.5.
--   “bill\_depth\_mm” is a numeric variable, whose mean is 17.1511696,
-    median is 17.3, standard deviation is 1.9747932, and range is 8.4.
--   “flipper\_length\_mm” is a numeric variable, whose mean is
-    200.9152047, median is 197, standard deviation is 14.0617137, and
-    range is 59.
--   “body\_mass\_g” is a numeric variable, whose mean is 4201.754386,
-    median is 4050, standard deviation is 801.9545357, and range
-    is 3600.
--   “year” has unique values: 2007, 2008, 2009.
--   The mean flipper length is 200.9152047.
+-   The data is described as below:
+    -   The variables in the penguins are: species, island,
+        bill\_length\_mm, bill\_depth\_mm, flipper\_length\_mm,
+        body\_mass\_g, sex, year.
+    -   The peguines dataset has 344 rows and 8 columns.
+    -   “species” is a factor variable, which has unique values: Adelie,
+        Chinstrap, Gentoo.
+    -   “island” is a factor variable, which has unique values: Biscoe,
+        Dream, Torgersen.
+    -   “sex” is a factor variable, which has unique values: female,
+        male.
+    -   “bill\_length\_mm” is a numeric variable, whose mean is
+        43.9219298, median is 44.45, standard deviation is 5.4595837,
+        range is 27.5.
+    -   “bill\_depth\_mm” is a numeric variable, whose mean is
+        17.1511696, median is 17.3, standard deviation is 1.9747932, and
+        range is 8.4.
+    -   “flipper\_length\_mm” is a numeric variable, whose mean is
+        200.9152047, median is 197, standard deviation is 14.0617137,
+        and range is 59.
+    -   “body\_mass\_g” is a numeric variable, whose mean is
+        4201.754386, median is 4050, standard deviation is 801.9545357,
+        and range is 3600.
+    -   “year” has unique values: 2007, 2008, 2009.
+    -   The mean flipper length is 200.9152047.
