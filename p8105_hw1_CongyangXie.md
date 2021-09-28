@@ -125,3 +125,4 @@ data("penguins", package = "palmerpenguins")
     median is 4050, standard deviation is 801.9545357, and range
     is 3600.
 -   “year” has unique values: 2007, 2008, 2009.
+-   The mean flipper length is 200.9152047.

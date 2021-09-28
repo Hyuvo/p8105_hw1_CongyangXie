@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 library(ggplot2)
 library(schoolmath)
-
+# generate columns and then combine them to a dataframe
 set.seed(1)
 c1 = rnorm(10)
 c2 = is.positive(c1)
@@ -33,6 +33,7 @@ df1 <- data.frame(c1, c2, c3, c4)
 ```
 Try to take the mean of each variable in your dataframe. What works and what doesn’t?
 ```{r}
+#Pull out each column to calculate mean.
 library(tidyverse)
 
 mean(pull(df1, 1))
@@ -45,7 +46,7 @@ mean(pull(df1, 4))
 The first mean is simply the arithmetic average. The true is 1, false is 0. But the third and last ones are not numeric or logical data, so their mean cannot be calculated.
 
 ```{r, results='hide'}
-
+#turn data to numeric for calculation
 mean(as.numeric(pull(df1,2)))
 mean(as.numeric(pull(df1,3)))
 mean(as.numeric(pull(df1,4)))
@@ -62,10 +63,12 @@ mean(as.numeric(pull(df1,4)))
   + the mean flipper length
 
 ```{r}
-
+## import data set
 data("penguins", package = "palmerpenguins")
 
 ```
+
+* The data is described as below:
   + The variables in the penguins are: `r names(penguins)`. 
   + The peguines dataset has `r nrow(penguins)` rows and `r ncol(penguins)` columns.
   + "species" is a factor variable, which has unique values: `r levels(pull(penguins, species))`.
