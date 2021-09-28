@@ -76,6 +76,7 @@ data("penguins", package = "palmerpenguins")
   + "flipper_length_mm" is a numeric variable, whose mean is `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)`, median is `r median(pull(penguins, flipper_length_mm), na.rm = TRUE)`, standard deviation is `r sd(pull(penguins, flipper_length_mm), na.rm = TRUE)`, and range is `r max(pull(penguins, flipper_length_mm), na.rm = TRUE) - min(pull(penguins, flipper_length_mm), na.rm = TRUE)`.
   + "body_mass_g" is a numeric variable, whose mean is `r mean(pull(penguins, body_mass_g), na.rm = TRUE)`, median is `r median(pull(penguins, body_mass_g), na.rm = TRUE)`, standard deviation is `r sd(pull(penguins, body_mass_g), na.rm = TRUE)`, and range is `r max(pull(penguins, body_mass_g), na.rm = TRUE) - min(pull(penguins, body_mass_g), na.rm = TRUE)`.
   + "year" has unique values: `r unique(pull(penguins, year), na.rm = TRUE)`.
+  + The mean flipper length is `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)`.
 
 
 
